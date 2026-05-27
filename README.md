@@ -26,17 +26,19 @@ A responsive digital product ecommerce MVP built with **Next.js App Router + Typ
    ```
 
 ## Deploy to GitHub Pages
-This repo now includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml`.
+This repo includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml`.
 
 1. Push this repo to GitHub.
 2. In GitHub, open **Settings → Pages**.
 3. Under **Build and deployment**, choose **Source: GitHub Actions**.
 4. Push to your default branch (`main`, `master`, or `work`) or run the workflow manually in **Actions**.
-5. After deploy, your site will be available on `https://<your-username>.github.io/<repo-name>/`.
+5. After deploy, your site will be available on:
+   `https://<your-username>.github.io/<repo-name>/`
 
-> Notes:
-> - `next.config.mjs` is configured for static export (`output: 'export'`) so GitHub Pages can host it.
-> - The current admin/auth/payment features are MVP placeholders and should be connected to real Supabase/Stripe backends for production.
+### Important GitHub Pages note
+- `next.config.mjs` auto-detects GitHub Actions and applies `basePath` + `assetPrefix` from `GITHUB_REPOSITORY`.
+- This avoids broken CSS/JS/image links when hosting under `/<repo-name>/`.
+- `trailingSlash: true` is enabled for static hosting consistency.
 
 ## Database (Supabase)
 - Run `supabase/schema.sql` in Supabase SQL editor.
